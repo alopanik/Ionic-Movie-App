@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-title>Moondie Movie Details</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/movies"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngIf="movie">
+    <ion-card-header>
+      <ion-card-title>
+        {{movie?.title}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img
+        [src]="imageBaseUrl + '/w500' + movie?.poster_path"
+        class = "movie_img"
+        />
+      <p>{{movie?.overview}}</p>
+      <ion-item lines="none">
+        <ion-icon name = "cash-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h3>{{movie?.budget | currency: 'USD':true}}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name = "calendar-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h3>{{movie?.release_date | date:'y'}}</h3>
+        </ion-label>
+      </ion-item>
+
+      <span *ngFor="let g of movie?.genres">
+        <ion-badge color="tertiary">{{g.name}}</ion-badge></span>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
