@@ -21,9 +21,15 @@
         />
       <p>{{movie?.overview}}</p>
       <ion-item lines="none">
+        <ion-icon name = "star-half-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h3>{{movie?.vote_average}}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
         <ion-icon name = "cash-outline" slot="start"></ion-icon>
         <ion-label>
-          <h3>{{movie?.budget | currency: 'USD':true}}</h3>
+          <h3>{{movie?.revenue | currency: 'USD':true}}</h3>
         </ion-label>
       </ion-item>
       <ion-item lines="none">
@@ -39,3 +45,7 @@
   </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-button color = "success" expand="full" (click)="openHomePage()">More Info</ion-button>
+</ion-footer>
